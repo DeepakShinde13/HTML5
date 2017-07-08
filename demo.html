@@ -9,19 +9,48 @@
 
 	#myCanvas {
 		background: #FFF;
+		width: 500px;
+    	height: 500px;
 	}
+
 	</style>
-	<script>
 
-	function draw(){
-		var ctx = document.getElementById('myCanvas').getContext('2d');
-	}
-	window.onload = draw()
-	</script>
+	
 </head>
-<body>
+	<body>
 
-<canvas id = "myCanvas" width = "500px" height = "500px">
-</canvas>
-</body>
+		<canvas id = "myCanvas" width = "500px" height = "500px" >
+		</canvas>
+
+		<script type = "text/javascript">
+
+		/*function getMousePos(canvas, evt){
+			var rect = canvas.getBoundingClientRect();
+        	return {
+	          x: evt.clientX - rect.left,
+	          y: evt.clientY - rect.top
+	        };
+		}*/
+
+		function draw(){
+			var canvas = document.getElementById('myCanvas');
+	      	var c = canvas.getContext('2d');
+
+	      	/*canvas.addEventListener('click', function(evt){
+	      		
+	      		var mousePos = getMousePos(canvas, evt);
+	      		c.fillStyle = 'black';
+	      		c.fillRect (mousePos.x, mousePos.y, 10, 10);
+	      		
+
+	       	})*/
+	       	c.beginPath();
+			c.arc(250, 450, 10 , 0, 2 * Math.PI, false);
+			c.fillStyle = "black";
+			c.stroke();
+			c.fill();
+  		}
+		window.onload = draw();
+		</script>
+	</body>
 </html>
