@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> HTML5Canvas</title>
+	<style type = "text/css">
+	body {
+		margin : 150px; background : #666;
+	}
+
+	#myCanvas {
+		background: #FFF;
+	}
+	</style>
+	<script>
+
+	function draw(){
+		var ctx = document.getElementById('myCanvas').getContext('2d');
+	}
+	window.onload = draw()
+	</script>
+</head>
+<body>
+
+<canvas id = "myCanvas" width = "500px" height = "500px">
+</canvas>
+</body>
+</html>
