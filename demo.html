@@ -24,33 +24,78 @@
 
 		<script type = "text/javascript">
 
-		/*function getMousePos(canvas, evt){
-			var rect = canvas.getBoundingClientRect();
-        	return {
-	          x: evt.clientX - rect.left,
-	          y: evt.clientY - rect.top
-	        };
-		}*/
+		var xc = 250;
+  		var yc = 450;
+		window.onload = draw();
+
+		
+		
+      	function drawCircle(c, xc, yc){
+			c.beginPath();
+			c.arc(xc, yc, 10 , 0, 2 * Math.PI, false);
+			c.fillStyle = "#222";
+			
+			c.fill();
+
+			 	
+		}
 
 		function draw(){
+
 			var canvas = document.getElementById('myCanvas');
 	      	var c = canvas.getContext('2d');
+	      	
+	      	
 
-	      	/*canvas.addEventListener('click', function(evt){
-	      		
-	      		var mousePos = getMousePos(canvas, evt);
-	      		c.fillStyle = 'black';
-	      		c.fillRect (mousePos.x, mousePos.y, 10, 10);
-	      		
+	      	drawCircle(c, xc, yc);
 
-	       	})*/
-	       	c.beginPath();
-			c.arc(250, 450, 10 , 0, 2 * Math.PI, false);
-			c.fillStyle = "black";
-			c.stroke();
-			c.fill();
-  		}
-		window.onload = draw();
+	      	window.addEventListener('keydown', function(e){
+
+		    if (e.keyCode == '38') {
+		        // up arrow
+		        moveUp(c , xc, yc);
+		    }
+		    else if (e.keyCode == '40') {
+		        // down arrow
+		        moveDown(c, xc, yc);
+		    }
+		    else if (e.keyCode == '37') {
+		       // left arrow
+		       moveLeft(c, xc, yc);
+		    }
+		    else if (e.keyCode == '39') {
+		       // right arrow
+		       //alert("keycode"+e.keyCode);
+		       moveRight(c, xc, yc);
+		    }
+
+	      	});
+	    
+		}
+
+		function moveUp(c){
+			yc-=20;
+			drawCircle(c, xc, yc);
+		}
+
+		function moveDown(c){
+			yc+=20
+			drawCircle(c, xc, yc);
+		}
+
+		function moveLeft(c){
+			xc-=20
+			drawCircle(c, xc, yc);
+		}
+
+		function moveRight(c){
+			xc+=20
+			drawCircle(c, xc, yc);
+		}
+
+		
+
+		
 		</script>
 	</body>
 </html>
