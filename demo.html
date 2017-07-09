@@ -26,10 +26,16 @@
 
 		var xc = 250;
   		var yc = 450;
+  		var len = {xi:[250], yi:[450]};
+
 		window.onload = draw();
 
 		
+		function getRandomArbitrary(min, max) {
+		    return Math.floor(Math.random() * (max - min)) + min;
+		}
 		
+
       	function drawCircle(c, xc, yc){
 			c.beginPath();
 			c.arc(xc, yc, 10 , 0, 2 * Math.PI, false);
@@ -49,47 +55,65 @@
 
 	      	drawCircle(c, xc, yc);
 
+
 	      	window.addEventListener('keydown', function(e){
 
 		    if (e.keyCode == '38') {
 		        // up arrow
-		        moveUp(c , xc, yc);
+		        c.clearRect(0, 0, canvas.width, canvas.height);
+		        moveUp(canvas, c);
 		    }
 		    else if (e.keyCode == '40') {
 		        // down arrow
-		        moveDown(c, xc, yc);
+		        c.clearRect(0, 0, canvas.width, canvas.height);
+		        moveDown(canvas, c);
 		    }
 		    else if (e.keyCode == '37') {
 		       // left arrow
-		       moveLeft(c, xc, yc);
+		       c.clearRect(0, 0, canvas.width, canvas.height);
+		       moveLeft(canvas, c);
 		    }
 		    else if (e.keyCode == '39') {
 		       // right arrow
 		       //alert("keycode"+e.keyCode);
-		       moveRight(c, xc, yc);
+		       c.clearRect(0, 0, canvas.width, canvas.height);
+		       moveRight(canvas, c);
 		    }
 
 	      	});
 	    
 		}
 
-		function moveUp(c){
-			yc-=20;
+		function moveUp(canvas, c){
+			yc-=10;
+			if (yc<0){
+				yc = canvas.width;
+			}
 			drawCircle(c, xc, yc);
 		}
 
-		function moveDown(c){
-			yc+=20
+		function moveDown(canvas, c){
+			yc+=10
+			if (yc>canvas.width){
+				yc = 0;
+			}
+			drawCircle(c, xc, yc);
+
+		}
+
+		function moveLeft(canvas, c){
+			xc-=10
+			if (xc < 0){
+				xc = canvas.width;
+			}
 			drawCircle(c, xc, yc);
 		}
 
-		function moveLeft(c){
-			xc-=20
-			drawCircle(c, xc, yc);
-		}
-
-		function moveRight(c){
-			xc+=20
+		function moveRight(canvas, c){
+			xc+=10
+			if (xc >canvas.width){
+				xc = 0;
+			}
 			drawCircle(c, xc, yc);
 		}
 
