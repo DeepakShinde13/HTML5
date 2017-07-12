@@ -3,6 +3,7 @@
 <head>
 	<title> HTML5Canvas</title>
 	<style type = "text/css">
+	
 	body {
 		margin : 150px; background : #666;
 	}
@@ -22,135 +23,6 @@
 		<canvas id = "myCanvas" width = "500px" height = "500px" >
 		</canvas>
 
-		<script type = "text/javascript">
-
-		var xc = [250,270,290];
-  		var yc = [450, 450,450];
-  		
-  		var canvas = document.getElementById('myCanvas');
-      	var c = canvas.getContext('2d');
-      	vdir = 0;
-  		
-		window.onload = draw();
-
-		
-		function getRandomArbitrary(min, max) {
-		    return Math.floor(Math.random() * (max - min)) + min;
-		}
-		
-		function simpleDrawCircle(){
-			
-		}
-
-      	function drawCircle(){
-      			
-      			c.clearRect(0,0, canvas.width,canvas.height);
-	      		if(vdir==0){
-	  				//console.log("HI Right");
-	      			for(var i = 0; i< xc.length; i++){
-	      				xc[i] = (xc[i]+20)%(canvas.width);
-						c.beginPath();
-						c.arc(xc[i], yc[i], 10 , 0, 2 * Math.PI, false);
-						c.fillStyle = "#222";
-						c.fill();
-						}
-				}
-				else if(vdir==1){
-	  				//console.log("HI Down");
-	      			for(var i = 0; i< xc.length; i++){
-	      				yc[i] = (yc[i]+20)%(canvas.height);
-						c.beginPath();
-						c.arc(xc[i], yc[i], 10 , 0, 2 * Math.PI, false);
-						c.fillStyle = "#222";
-						c.fill();
-						}
-				}
-
-				else if(vdir==2){
-
-	  				//console.log("HI Up");
-	      			for(var i = 0; i< xc.length; i++){
-	      				
-	      				if (yc[i]-20<0){
-	      					yc[i] = canvas.height;
-	      				}
-	      				else yc[i] = yc[i]-20;
-	      				
-						c.beginPath();
-						c.arc(xc[i], yc[i], 10 , 0, 2 * Math.PI, false);
-						c.fillStyle = "#222";
-						c.fill();
-						}
-				}
-
-				else if(vdir==3){
-
-	  				//console.log("HI Left");
-	      			for(var i = 0; i< xc.length; i++){
-
-	      				if (xc[i]-20<0){
-	      					xc[i] = canvas.width;
-	      				}
-	  					else xc[i] = xc[i]-20;
-
-						c.beginPath();
-						c.arc(xc[i], yc[i], 10 , 0, 2 * Math.PI, false);
-						c.fillStyle = "#222";
-						c.fill();
-						}
-
-				}
-			
-
-
-			setTimeout(function(){drawCircle()}, 100);			 	
-		}
-
-		
-		//on window.load this is called 
-		function draw(){
-
-			
-	      	window.addEventListener('keydown', function(e){
-
-		    if (e.keyCode == '38') {
-		        // up arrow
-		        if (vdir!=2 && vdir!= 1){	
-		       	vdir = 2;	
-		       }
-		    }
-		    else if (e.keyCode == '40') {
-		        // down arrow
-
-		        if (vdir!=1 && vdir!= 2){
-		       		vdir = 1;	
-		       	}
-		        
-		    }
-		    else if (e.keyCode == '37') {
-		       // left arrow
-		       if (vdir!=3 && vdir!= 0){
-		       	vdir = 3;	
-		       }
-		    }
-		    else if (e.keyCode == '39') {
-		       // right arrow
-		       if (vdir!=0 && vdir!= 3){
-		       	vdir = 0;	
-		       }
-		       
-		    }
-
-	      	});
-
-			drawCircle(0);
-	      	
-		}
-
-
-
-
-
-		</script>
+		<script type = "text/javascript" src = "snakeScript.js"></script>
 	</body>
 </html>
