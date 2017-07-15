@@ -30,6 +30,7 @@ function generateRandomCooradinates(){
 
 function restart_game(){
 	window.alert("Game Over. Your Score : "+ global_points);
+	global_points = 0;
 	xc = [50,30,10];
 	yc = [490, 490,490];
 	vdir = 0;
